@@ -8,6 +8,7 @@ package core.baseComponent
 	import flash.geom.Rectangle;
 	
 	import core.loadEvents.CLoaderMany;
+	import core.tween.TweenLite;
 	
 	public class HScroller extends Sprite
 	{
@@ -195,6 +196,15 @@ package core.baseComponent
 		public function changeScrollBarState(_isShow:Boolean):void
 		{
 			barSprite.visible = _isShow;
+		}
+		public function scrollTo(yy:int):void
+		{
+			TweenLite.to(target,.5,{y:-yy,onComplete:moveOve});
+			
+		}
+		public function moveOve():void
+		{
+			sliderSprite.y = Math.abs(_target.y-objY)/(_target.height-maskHeight)*(barSprite.height - sliderSprite.height);
 		}
 		public function reset():void
 		{
