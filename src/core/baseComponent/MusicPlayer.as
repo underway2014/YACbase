@@ -14,6 +14,7 @@ package core.baseComponent
 		private var autoPlay:Boolean;
 		private var isLoop:Boolean;
 		private var _isPause:Boolean = true;
+		private var _length:int;
 		/**
 		 * 
 		 * @param _url
@@ -47,6 +48,8 @@ package core.baseComponent
 			{
 				play();
 			}
+//			_length = sound.length;
+			dispatchEvent(new Event(MUSIC_LOAD_COMPLETE));
 		}
 		private function errorHandler(event:IOErrorEvent):void
 		{
@@ -60,6 +63,7 @@ package core.baseComponent
 		public static const RE_PLAYING:String = "replaying";
 		public static const PLAY_OVER:String = "playover";
 		public static const STOP_PLAYING:String = "stopplaying";
+		public static const MUSIC_LOAD_COMPLETE:String = "musicloadComplete";
 		
 		/**
 		 * 开始播放或从暂停处开始播放 
@@ -130,6 +134,7 @@ package core.baseComponent
 
 		public function get currentPosition():int
 		{
+			_currentPosition = song.position;
 			return _currentPosition;
 		}
 
@@ -137,5 +142,17 @@ package core.baseComponent
 		{
 			_currentPosition = value;
 		}
+
+		public function get length():int
+		{
+			return sound.length;
+		}
+
+		public function set length(value:int):void
+		{
+			_length = value;
+		}
+
+
 	}
 }
