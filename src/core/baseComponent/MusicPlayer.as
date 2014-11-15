@@ -106,9 +106,9 @@ package core.baseComponent
 		}
 		private function playOverHandler(event:Event):void
 		{
+			_currentPosition = 0;
 			if(isLoop)
 			{
-				_currentPosition = 0;
 				song = null;
 				play();
 			}
