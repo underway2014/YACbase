@@ -265,6 +265,10 @@ package core.baseComponent
 				s = null;
 			}
 		}
+		public function reset():void
+		{
+//			viewContain.x = 0;
+		}
 
 
 	}

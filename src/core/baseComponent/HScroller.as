@@ -28,6 +28,7 @@ package core.baseComponent
 		private var shape:Shape;
 		private var _barX:int;
 		private var isShowBar:Boolean = true;
+		private var isScrollBar:Boolean = false;
 		/**
 		 * 
 		 * @param _maskwidth  遮罩宽，高
@@ -55,9 +56,9 @@ package core.baseComponent
 			dragMask.graphics.drawRect(0,0,_maskwidth,_maskheight);
 			dragMask.graphics.endFill();
 			dragMask.visible = false;
-			
 			if(barSrcUrls)
 			{
+				isScrollBar = true;
 				isShowBar = false;
 				loader = new CLoaderMany;
 				loader.load(barSrcUrls);
@@ -102,7 +103,7 @@ package core.baseComponent
 //			loader._loaderContent[1].height = maskHeight;
 			barSprite.addChild(loader._loaderContent[1]);
 			sliderSprite.addChild(loader._loaderContent[0]);
-			loader._loaderContent[0].x = -1;
+			loader._loaderContent[0].x = 8;
 			barSprite.addChild(sliderSprite);
 //			sliderSprite.addEventListener(MouseEvent.MOUSE_DOWN,barStartDragHandler);
 //			sliderSprite.addEventListener(MouseEvent.MOUSE_UP,barStopDragHandler);
@@ -126,7 +127,12 @@ package core.baseComponent
 			//			
 			//			barslider.y = Math.abs(_target.y-objY)/(_target.height-maskHeight)*(maskHeight-barslider.height);
 			sliderSprite.y = Math.abs(_target.y-objY)/(_target.height-maskHeight)*(barSprite.height - sliderSprite.height);
-			
+			if(sliderSprite.y > (barSprite.height - sliderSprite.height - 2))
+			{
+				tipImg.visible = false;
+			}else{
+				tipImg.visible = true;
+			}
 			
 		}
 		private function updateContent(event:Event):void
@@ -138,7 +144,7 @@ package core.baseComponent
 		{
 			return _target;
 		}
-		
+		private var tipImg:CImage;
 		public function set target(value:Sprite):void
 		{
 			_target = value;
@@ -149,6 +155,12 @@ package core.baseComponent
 			this.addChild(barSprite);
 			this.addChild(dragMask);
 			_target.mask = shape;
+			tipImg = new CImage(284,38,false,false);
+			tipImg.url = "source/public/moreTip.png";
+			if(isScrollBar)
+			this.addChild(tipImg);
+			tipImg.y = height - 38;
+			tipImg.x = (width - 284) / 2;
 			
 			this.x =_target.x;
 			this.y = _target.y;
@@ -199,12 +211,22 @@ package core.baseComponent
 		}
 		public function scrollTo(yy:int):void
 		{
+			if(-yy < -(_target.height - maskHeight))
+			{
+				yy = _target.height - maskHeight;
+			}
 			TweenLite.to(target,.5,{y:-yy,onComplete:moveOve});
 			
 		}
 		public function moveOve():void
 		{
 			sliderSprite.y = Math.abs(_target.y-objY)/(_target.height-maskHeight)*(barSprite.height - sliderSprite.height);
+			if(sliderSprite.y > (barSprite.height - sliderSprite.height - 2))
+			{
+				tipImg.visible = false;
+			}else{
+				tipImg.visible = true;
+			}
 		}
 		public function reset():void
 		{
