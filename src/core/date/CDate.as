@@ -44,7 +44,7 @@ package core.date
 				case 4:
 					str = "四";
 					break;
-				case5:
+				case 5:
 					str = "五";
 					break;
 				case 6:

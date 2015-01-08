@@ -4,6 +4,7 @@
     <classEntry path="core.baseComponent.CDrag"/>
     <classEntry path="core.baseComponent.AutoMove"/>
     <classEntry path="core.interfaces.PageClear"/>
+    <classEntry path="core.baseComponent.IRButton"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>

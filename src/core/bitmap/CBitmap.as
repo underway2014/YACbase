@@ -1,10 +1,6 @@
 package core.bitmap
 {
-	import com.hurlant.crypto.hash.SHA1;
-	
-	import flash.display.Bitmap;
 	import flash.display.BitmapData;
-	import flash.display.DisplayObject;
 	import flash.display.Shape;
 
 	public class CBitmap
@@ -35,7 +31,6 @@ package core.bitmap
 			}   
 			
 			shape.graphics.endFill();   
-//			png_mc.removeChildAt(0);   
 			return shape;
 		}
 	}

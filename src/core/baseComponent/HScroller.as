@@ -102,6 +102,14 @@ package core.baseComponent
 			barSprite.y = (maskHeight - loader._loaderContent[1].height) / 2;
 //			loader._loaderContent[1].height = maskHeight;
 			barSprite.addChild(loader._loaderContent[1]);
+			
+			var bgslider:Shape = new Shape();
+			bgslider.graphics.beginFill(0xaacc00,0);
+			bgslider.graphics.drawRect(0,0,loader._loaderContent[0].width,loader._loaderContent[0].height + 30);
+			bgslider.graphics.endFill();
+			
+			sliderSprite.addChild(bgslider);
+			loader._loaderContent[0].y = 15;
 			sliderSprite.addChild(loader._loaderContent[0]);
 			loader._loaderContent[0].x = 8;
 			barSprite.addChild(sliderSprite);
@@ -233,9 +241,9 @@ package core.baseComponent
 			sliderSprite.y = _target.y = 0;
 			if(target.height <= maskHeight)
 			{
-				barSprite.visible = false;
+				tipImg.visible = barSprite.visible = false;
 			}else{
-				barSprite.visible = true;
+				tipImg.visible = barSprite.visible = true;
 			}
 		}
 	}
