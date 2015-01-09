@@ -1,7 +1,11 @@
 package core.filter
 {
+	import flash.filters.BitmapFilterQuality;
+	import flash.filters.BitmapFilterType;
 	import flash.filters.ColorMatrixFilter;
+	import flash.filters.DropShadowFilter;
 	import flash.filters.GlowFilter;
+	import flash.filters.GradientGlowFilter;
 
 	public class CFilter
 	{
@@ -15,5 +19,10 @@ package core.filter
 		public static var whiteFilter:Array = [new GlowFilter(0xffffff,1,4,4,8)];
 		public static var photoBorderFilter:Array = [new GlowFilter(0xdbdbdb,1,4,4,8)];
 		
+		public static var moveFilter:GradientGlowFilter = new GradientGlowFilter(-30,0,[0xff0000, 0x00ff00, 0x0000FF, 0xaacc00, 0x00cccc],
+			[0.6, 0.4, 0.3, 0.2,0.1],[0, 32, 64, 128, 225],64,0,1,BitmapFilterQuality.HIGH,BitmapFilterType.OUTER);
+		
+//		public static var shadowFilter:DropShadowFilter = new DropShadowFilter(40,0,0xffb90f,.3,20,0,1,1,false);
+		public static var shadowFilter:Array = [new DropShadowFilter(40,0,0xffb90f,.1,50,0,1,1,false)];
 	}
 }
