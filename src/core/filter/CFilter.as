@@ -19,6 +19,8 @@ package core.filter
 		public static var whiteFilter:Array = [new GlowFilter(0xffffff,1,4,4,8)];
 		public static var photoBorderFilter:Array = [new GlowFilter(0xdbdbdb,1,4,4,8)];
 		
+		
+		public static var blueFilter:Array = [new GlowFilter(0x7FFFD4,.3,10,0,8)];
 		public static var moveFilter:GradientGlowFilter = new GradientGlowFilter(-30,0,[0xff0000, 0x00ff00, 0x0000FF, 0xaacc00, 0x00cccc],
 			[0.6, 0.4, 0.3, 0.2,0.1],[0, 32, 64, 128, 225],64,0,1,BitmapFilterQuality.HIGH,BitmapFilterType.OUTER);
 		

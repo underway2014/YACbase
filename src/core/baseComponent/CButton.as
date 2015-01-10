@@ -88,7 +88,7 @@ package core.baseComponent
 				if(i<urlArr.length)
 					txtSprite.addChild(loader._loaderContent[i]);
 				
-				alphaBtn.graphics.beginFill(0xaaffff,0);
+				alphaBtn.graphics.beginFill(0x000000,0);
 				alphaBtn.graphics.drawRect(0,0,loader._loaderContent[0].width,loader._loaderContent[0].height);
 				alphaBtn.graphics.endFill();
 				
