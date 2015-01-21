@@ -19,6 +19,7 @@ package core.baseComponent
 		private var isStateChange:Boolean;	//是否支持各种状态间切换
 		private var isSelect:Boolean;
 		private var _bgWidth:int;
+		public var isMoveing:Boolean;
 		/**
 		 * 
 		 * @param arg 按钮皮肤地址//正常，点击，按钮上的文字图片

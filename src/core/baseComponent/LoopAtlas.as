@@ -2,6 +2,7 @@ package core.baseComponent
 {
 	import flash.display.Shape;
 	import flash.display.Sprite;
+	import flash.events.Event;
 	import flash.events.TimerEvent;
 	import flash.geom.Point;
 	import flash.utils.Timer;
@@ -13,6 +14,7 @@ package core.baseComponent
 		private var viewArr:Array;
 		private var currentPage:int = 0;
 		private var _selfWidth:int = 1920;
+		public static const PLAY_OVER:String = "loopplayover";
 		/**
 		 *图集大小 
 		 */		
@@ -100,6 +102,8 @@ package core.baseComponent
 			if(currentPage > viewArr.length - 1)
 			{
 				currentPage = 0;
+				dispatchEvent(new Event(PLAY_OVER));
+				trace("dispatch loop play over event");
 			}
 			if(currentPage < 0)
 			{
