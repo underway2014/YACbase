@@ -61,16 +61,10 @@ package core.baseComponent
 			
 			dataViewArr = new Array();
 			
-			if(autoMove)
-			{
-				timer = new Timer(1000 * 7);
-				timer.addEventListener(TimerEvent.TIMER,autoMoveHandler);
-				timer.start();
-			}
-			getView();
+			
 		}
 		private var dir:int = -1;
-		private var isMoving:Boolean =false;
+		private var isMoving:Boolean = false;
 		private function autoMoveHandler(event:TimerEvent):void
 		{
 			isMoving = true;
@@ -155,10 +149,11 @@ package core.baseComponent
 		}
 		private function getView():void
 		{
-			while(dataViewArr.length)
-			{
-				dataViewArr.shift();
-			}
+//			while(dataViewArr.length)
+//			{
+//				dataViewArr.shift();
+//			}
+			dataViewArr.length = 0;
 			if(currentPage - 1 >=0)
 			{
 				leftIndex = currentPage - 1;
@@ -210,6 +205,16 @@ package core.baseComponent
 		{
 			_size = value;
 			_selfWidth = _size.x;
+			
+			
+			if(autoMove)
+			{
+				timer = new Timer(1000 * 7);
+				timer.addEventListener(TimerEvent.TIMER,autoMoveHandler);
+				timer.start();
+			}
+			getView();
+			
 			var maskShape:Shape = new Shape();
 			maskShape.graphics.beginFill(0xaa0000,.2);
 			maskShape.graphics.drawRect(0,0,_size.x,_size.y);

@@ -3,6 +3,8 @@ package core.baseComponent
 	import flash.display.Shape;
 	import flash.display.Sprite;
 	import flash.events.Event;
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 	
 	import core.layout.PictureZoom;
 	import core.loadEvents.CLoader;
@@ -41,10 +43,25 @@ package core.baseComponent
 		{
 			return _url;
 		}
-
+		private var loadTimer:Timer;
 		public function set url(value:String):void
 		{
 			_url = value;
+			loadTimer = new Timer(10,1);
+			loadTimer.addEventListener(TimerEvent.TIMER,timerHandler);
+			loadTimer.addEventListener(TimerEvent.TIMER_COMPLETE,loadTimerOver);
+			loadTimer.start();
+			
+		}
+		private function loadTimerOver(event:TimerEvent):void
+		{
+			if(loadTimer)
+			{
+				loadTimer = null;
+			}
+		}
+		private function timerHandler(event:TimerEvent):void
+		{
 			var loader:CLoader = new CLoader();
 			loader.load(_url);
 			loader.addEventListener(CLoader.LOADE_COMPLETE,picOkHandler);
