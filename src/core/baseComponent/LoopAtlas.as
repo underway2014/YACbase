@@ -93,6 +93,7 @@ package core.baseComponent
 		{
 			reDrawCircle();
 			currentPage -= dir;
+			dispatchEvent(new Event("MOVE_OVER"));
 			if(currentPage > viewArr.length - 1)
 			{
 				currentPage = 0;
@@ -277,6 +278,10 @@ package core.baseComponent
 		public function reset():void
 		{
 //			viewContain.x = 0;
+		}
+		public function getCurrentPage():int
+		{
+			return currentPage;
 		}
 
 

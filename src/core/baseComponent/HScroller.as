@@ -139,7 +139,7 @@ package core.baseComponent
 			{
 				tipImg.visible = false;
 			}else{
-				tipImg.visible = true;
+//				tipImg.visible = true;
 			}
 			
 		}
@@ -198,6 +198,9 @@ package core.baseComponent
 			dragMask.addEventListener(MouseEvent.MOUSE_UP,stopdragHandler);
 			dragMask.addEventListener(MouseEvent.MOUSE_OUT,stopdragHandler);
 			dragMask.visible = true;
+			
+			tipImg.visible = false;
+			
 		}
 		private function stopdragHandler(event:MouseEvent):void
 		{
@@ -233,7 +236,7 @@ package core.baseComponent
 			{
 				tipImg.visible = false;
 			}else{
-				tipImg.visible = true;
+//				tipImg.visible = true;
 			}
 		}
 		public function reset():void

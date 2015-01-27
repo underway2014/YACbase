@@ -47,10 +47,14 @@ package core.baseComponent
 		public function set url(value:String):void
 		{
 			_url = value;
-			loadTimer = new Timer(10,1);
-			loadTimer.addEventListener(TimerEvent.TIMER,timerHandler);
-			loadTimer.addEventListener(TimerEvent.TIMER_COMPLETE,loadTimerOver);
-			loadTimer.start();
+//			loadTimer = new Timer(10,1);
+//			loadTimer.addEventListener(TimerEvent.TIMER,timerHandler);
+//			loadTimer.addEventListener(TimerEvent.TIMER_COMPLETE,loadTimerOver);
+//			loadTimer.start();
+			
+			var loader:CLoader = new CLoader();
+			loader.load(_url);
+			loader.addEventListener(CLoader.LOADE_COMPLETE,picOkHandler);
 			
 		}
 		private function loadTimerOver(event:TimerEvent):void
@@ -62,9 +66,9 @@ package core.baseComponent
 		}
 		private function timerHandler(event:TimerEvent):void
 		{
-			var loader:CLoader = new CLoader();
-			loader.load(_url);
-			loader.addEventListener(CLoader.LOADE_COMPLETE,picOkHandler);
+//			var loader:CLoader = new CLoader();
+//			loader.load(_url);
+//			loader.addEventListener(CLoader.LOADE_COMPLETE,picOkHandler);
 		}
 		private function picOkHandler(event:Event):void
 		{
